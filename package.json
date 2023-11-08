@@ -1,0 +1,20 @@
+{
+  "name": "universityfinds",
+  "version": "1.0.0",
+  "description": "Dating App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon -e ts,js --exec ts-node -r tsconfig-paths/register ./src/index.ts",
+    "build": "tsc --project ./tsconfig.json",
+    "prod": "tsc --project ./tsconfig.json && npx nodemon -e ts,js --exec ts-node -r tsconfig-paths/register ./out/index.js",
+    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^4.0.7"
+  }
+}
