@@ -3,6 +3,12 @@ import client from 'mongodb/client'
 import { User } from './user-model'
 const db = client.db()
 
+export async function addUser(user: User): Promise<string |ObjectId> {
+	const users = db.collection<User>('users')
+	const { insertedId } = await users.insertOne({ ...user })
+	return insertedId
+}
+
 export async function getUsersExcept(ids: Array<ObjectId | string>) {
     const usersCollection = db.collection<User>('users');
   
