@@ -5,19 +5,20 @@ import cors from 'cors'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 
+import userRouter from 'data_models/User/user-router'
+import messageRouter from 'data_models/Messages/message-router'
+
 dotenv.config({ path: './env' })
 
 const app: Express = express()
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5001
 
-app.use(cors({ credentials: true, origin: 'http://localhost:5150' }))
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' }))
 app.use(cookieParser())
 app.use(express.json())
 
-//Health check
-/* app.get('/', (req, res) => {
-	res.send('Server is up!')
-}) */
+app.use('/api/user', userRouter)
+app.use('/api/messages', messageRouter)
 
 const REACT_PATH = '../dist';
 

@@ -1,0 +1,97 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+#breadcrumbs{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 0.5rem;
+    margin-left: 1rem;
+    padding: 0.5rem;
+}
+
+#breadcrumbs > div{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#breadcrumbs svg{
+    color: var(--gray);
+}
+
+.crumb{
+    text-decoration: none;
+    transition: color 0.2s;
+    color: #9ea7ad;
+}
+
+.crumb:hover{
+    color: var(--clr-accent);
+    text-decoration: underline;
+}
+.crumb.active{
+    color: var(--clr-accent);
+}
+
+#navbar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 0.75rem;
+    background: #ffffff;
+    border-bottom: solid 1px var(--gray);
+}
+
+#profile{
+    justify-self: flex-end;
+}
+
+.links{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 1.5rem;
+}
+
+.link{
+    transition: all 0.2s;
+    position: relative;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #858a99;
+    text-align: center;
+    border-bottom: solid 2px transparent;
+}
+
+.link:not(.active):hover{
+    cursor: pointer;
+    color: var(--clr-accent);
+}
+
+.link.active{
+    cursor: default;
+    color: var(--clr-accent);
+}
+
+#beta{
+    pointer-events: none;
+    position: absolute;
+    top: -18px;
+    left: 90%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    color: #4e515c;
+    border-radius: var(--bd-rad);
+    background: var(--gray);
+}
+
+.link.active #beta{
+    color: #ffffff;
+    border-radius: var(--bd-rad);
+    background: var(--clr-accent-gradient);
+}

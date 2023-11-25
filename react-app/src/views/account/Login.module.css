@@ -1,0 +1,66 @@
+#login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    width: 100%;
+    max-width: 25rem;
+    padding: 2rem;
+
+    /* Gradient border */
+    border-radius: var(--bd-rad);
+    border: double 2px transparent;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #5ee2d0,#396AFC);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}   
+
+#loginForm .field{
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    gap: 0.5rem;
+}
+
+#create{
+    text-align: center;
+    color: var(--clr-accent);
+}
+
+#loginForm .input{
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input > input[type=email], .input > input[type=password]{
+    all: unset;
+}
+
+.input > svg{
+    color: var(--gray);
+}
+
+.providers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.providers > .icon{
+    fill: var(--gray);
+}
+
+.loginError{
+    text-align: center;
+    color: var(--clr-error);
+}

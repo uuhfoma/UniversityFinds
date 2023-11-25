@@ -1,7 +1,5 @@
-import { ObjectId } from 'mongodb'
-
 export interface User {
-	_id: ObjectId | string
+	_id: string
     username: string
 	fname: string
 	lname: string
@@ -21,10 +19,4 @@ export interface User {
     notifications?: string[]
     //system settings will be defined below
 
-}
-
-export interface Session {
-	_id: ObjectId
-	user: ObjectId
-	token: string
 }

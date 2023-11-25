@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+:root{
+    --clr-accent-gradient: linear-gradient(to bottom right ,#396AFC, #2948ff); /* gradient accent color */
+    --clr-accent: #396afc; /* accent color */
+    --clr-accent-disabled: #b0c3fe;
+    --clr-secondary: #5588A3;
+    --clr-error: #ff4c30;
+    --bd-rad: 8px; /* border radius */
+    --gray: #c1c1c1; /* gray color for things like borders */
+    --txt-clr: #27396e; /* Text color */
+    --shadow: 0px 2px 6px -1px rgba(0,0,0,0.4);
+}
+
+/* Global styles */
+
+html, body, #root{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #f1f5f9;
+}
+
+h1, h2, h3, h4, h5, h6, p, a{ 
+    margin: 0;
+    color: var(--txt-clr);
+}
+
+a.active{
+    color: var(--clr-accent);
+}
+
+svg{
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+ul{ 
+    margin: 0;
+    padding: 0;
+    list-style: none;
+ }
+
+/* buttons */
+
+.btn-primary, .btn-secondary{
+    all: unset;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary > svg{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.btn-primary{
+    color: #ffffff;
+    background: var(--clr-accent);
+}
+
+.btn-primary:hover{
+    background: #142ebd;
+}
+
+.btn-primary:disabled{
+    cursor: not-allowed;
+    background: var(--clr-accent-disabled);
+}
+
+.btn-secondary{
+    background: #ffffff;
+    border-radius: var(--bd-rad);
+    border: solid 1px var(--gray);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:disabled{
+    cursor: not-allowed;
+    background: #eeeeee;
+}
+
+/* text inputs */
+input[type=text], input[type=number], textarea, .input{
+    transition: all 0.2s;
+    outline: none;
+    resize: none;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: var(--bd-rad);
+    border: solid 2px var(--gray);
+    /* background: #f0f3fd; */
+}
+
+.input:placeholder-shown,
+input[type=text]:placeholder-shown,
+input[type=number]:placeholder-shown,
+textarea:placeholder-shown{
+    background: #ffffff;
+}
+
+.input:hover, .input:focus-within,
+input[type=text]:hover, input[type=number]:hover, textarea:hover,
+input[type=text]:focus-within, input[type=number]:focus-within, textarea:focus-within{
+    background: #ffffff;
+    border-color: var(--clr-accent);
+}
+
+input:invalid{
+    background: #ffdbd6;
+    border-color: var(--clr-error);
+}
+
+.subtitle{
+    color: #7a7f8d;
+}
+
+.card{
+    background: #ffffff;
+    border-radius: var(--bd-rad);
+    border: solid 1px var(--gray);
+}
+
+
+.hr {
+    font-size: 1.2rem;
+    width: 100%; 
+    text-align: center; 
+    color: var(--gray);
+    border-bottom: 1px solid var(--gray); 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ } 
+ 
+ .hr span { 
+     background:#ffffff; 
+     padding:0 10px; 
+ }
