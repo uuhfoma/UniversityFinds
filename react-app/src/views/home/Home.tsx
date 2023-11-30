@@ -1,13 +1,21 @@
 import React from 'react';
-// import video from '.../videoTU.mp4'
+import ReactPlayer from 'react-player';
+import styles from '/Home.module.css'
+// import video from 'views/home/assests/';
+
 
 const Home: React.FC = () => {
   return (
-    <div className='home'>
-
-      {/* <video src {video} /> */}
-
-    </div>
+    <div className="video-background">
+    <ReactPlayer
+      url="videoTU.mp4" // Replace with the URL of your video
+      playing
+      loop
+      muted
+      width="100%"
+      height="100%"
+    />
+  </div>
   );
 };
 
