@@ -1,0 +1,16 @@
+/* About.module.css */
+
+.container {
+    font-family: 'Times New Roman';
+    text-align: center;
+  }
+  
+  .header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .paragraph {
+    margin-bottom: 1rem;
+  }
+  
