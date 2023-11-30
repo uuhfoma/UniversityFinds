@@ -9,7 +9,7 @@ import { User } from 'shared/models/user'
 
 function LoginAccount() {
 	interface FormData {
-		email: string
+		studentEmail: string
 		password: string
 	}
 
@@ -20,7 +20,7 @@ function LoginAccount() {
 	const [submitWarning, setSubmitWarning] = useState('')
 	const [loginError, setLoginError] = useState(false);
 	const [formData, setFormData] = useState<FormData>({
-		email: '',
+		studentEmail: '',
 		password: '',
 	})
 
@@ -38,10 +38,18 @@ function LoginAccount() {
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const fieldName = event.target.name
 		const fieldValue = event.target.value
-		setFormData((prevState: any) => ({
-			...prevState,
-			[fieldName]: fieldValue,
-		}))
+		if (fieldName == 'email'){
+			setFormData((prevState: any) => ({
+				...prevState,
+				['studentEmail']: fieldValue,
+			}))
+		}else{
+			setFormData((prevState: any) => ({
+				...prevState,
+				[fieldName]: fieldValue,
+			}))
+		}
+		
 	}
 
 	async function handleSubmit(e: { preventDefault: () => void }) {
@@ -71,7 +79,7 @@ function LoginAccount() {
 						})
 						.then((user: User) => {
 							userContext!.setUser(user)
-							navigate('/')
+							navigate('/explore')
 						})
 						.catch((err) => {
 							console.log('error getting user', err)

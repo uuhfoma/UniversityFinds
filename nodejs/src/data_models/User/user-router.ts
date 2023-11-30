@@ -8,9 +8,20 @@ import {
 	userLogin,
 	userLogout,
 } from './user-db'
+import sessionAuthMiddleware from 'middleware/session-auth'
 //Name of cookie
 const COOKIE_NAME = 'auth'
 const router = Router()
+
+router.use('/me', sessionAuthMiddleware)
+
+router.get('/me', async (req, res) => {
+	const userId = res.locals.userId
+
+	const user = await userDB.getUserById(userId)
+
+	res.json(user)
+})
 
 router.get('/:id', async (req, res) => {
 	const { id } = req.params
@@ -162,6 +173,7 @@ router.delete('/delete/:id', async (req, res) => {
 		res.sendStatus(500)
 	}
 })
+
 
 
 

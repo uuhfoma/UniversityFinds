@@ -28,7 +28,7 @@ const sessionAuthMiddleware: RequestHandler = async (
 
 	console.log('Client is autheticated')
 
-	res.locals.userId = existingSession.user
+	res.locals.userId = existingSession._id
 	next()
 }
 

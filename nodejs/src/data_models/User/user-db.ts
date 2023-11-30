@@ -54,7 +54,9 @@ export async function createUser(userData: User) {
 export async function userLogin(userLogin: User) {
 	try {
 		const usersCollection = db.collection<User>('users')
+		console.log(usersCollection)
 		const email = userLogin.studentEmail
+		console.log(email)
 		const password = await hash(userLogin.password)
 		console.log('PASSWORD: ' + password)
 		const result = await usersCollection.findOne({

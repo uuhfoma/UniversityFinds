@@ -19,7 +19,7 @@ const Matches: React.FC = () => {
           <div>Matches will be available to view here.</div>
       </div>
     );
-  }
+  }else{
     return (
         <div className = {styles.container}>
           <h2 className={styles.title}>Matches</h2>
@@ -28,6 +28,8 @@ const Matches: React.FC = () => {
             ))}
         </div>
     );
+  }
+    
 };
 
 export default Matches;
