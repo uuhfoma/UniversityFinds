@@ -9,12 +9,12 @@ export interface User {
     age: number //auto calculated by DOB
     gender: string  //'male' or 'female' string
     school?: string
-    class?: string
+    class_?: string
     major?: string[]
     minor?: string
     bio?: string
-    pictures?: [string] //url format
-    getToKnow?: any[]  // could be user
+    pictures: [string] //url format
+    getToKnow?: User[]  // matches (update when a match is found in explore)
     likes?: any[]
     notifications?: string[]
     //system settings will be defined below

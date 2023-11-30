@@ -1,0 +1,117 @@
+#create{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#account-form{
+    align-self: center;
+    justify-self: center;
+    
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    /* Gradient border */
+    border-radius: var(--bd-rad);
+    border: double 2px transparent;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #5ee2d0,#396AFC);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    width: 100%;
+    max-width: 30rem;
+}
+
+#account-form .input{
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input > input[type=email], .input > input[type=password]{
+    all: unset;
+}
+
+.header{
+    text-align: center;
+}
+
+#height{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content 1fr;
+    gap: .5rem;
+}
+
+#height > label{
+    grid-row: 1;
+}
+
+.err-msg{
+    margin-left: 0.5rem;
+    color: var(--clr-error);
+}
+
+.section{
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    gap: 0.5rem;
+}
+.section2{
+    display: grid;
+    grid-template-rows: max-content 3fr;
+    gap: 0.5rem;
+}
+
+.section.error > .input{
+    background: #ffedea;
+    border-color: var(--clr-error);
+}
+
+.submit{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#login{
+    text-align: center;
+    color: var(--clr-accent);
+}
+
+#member-type-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content 1fr;
+    gap: 1rem;
+}
+
+#member-type-section > .member-type{
+    grid-row: 2;
+}
+
+
+
+.member-type{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: #ffffff;
+    border-radius: var(--bd-rad);
+    border: solid 2px var(--gray);
+}
+
+.member-type *{ cursor: pointer; }
+
+.member-type.active{
+    background: #ebf0ff;
+    color: var(--clr-accent);
+    border-color: var(--clr-accent);
+}

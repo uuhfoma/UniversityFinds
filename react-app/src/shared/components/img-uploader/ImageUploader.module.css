@@ -1,0 +1,126 @@
+.uploader *{
+    transition: all 0.2s;
+}
+
+.uploader{
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: var(--bd-rad);
+    border: solid 2px var(--gray);
+    border-style: dashed;
+}
+
+.file-btn{
+    cursor: pointer;
+    margin: 0 0.3rem;
+}
+
+#new:hover{
+    color: var(--clr-accent);
+}
+
+#overwrite{
+    color: var(--clr-error);
+    border-color: var(--clr-error);
+}
+
+#icon{
+    width: 3rem;
+    height: 3rem;
+}
+
+#img{
+    object-fit: contain;
+    max-width: 50%;
+    max-height: 50%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--bd-rad);
+}
+
+#file-details{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#drop-zone.active{
+    background: #eff3ff;
+    border-color: var(--clr-accent);
+    border-style: solid;
+}
+
+#drop-zone.active #filetype{
+    color: var(--clr-accent);
+}
+
+#drop-zone.active .hr span{
+    background: #eff3ff;
+}
+
+
+.hr{
+    font-size: 1.2rem;
+    width: 100%; 
+    text-align: center; 
+    color: var(--gray);
+    border-bottom: 1px solid var(--gray); 
+    line-height: 0.1em;
+ } 
+ 
+ .hr span { 
+     background:#ffffff; 
+     padding:0 10px; 
+ }
+.inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.urlInputContainer {
+    /* margin-top: 100px;
+    margin-bottom: 100px; */
+    
+    justify-content: center ;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+ .urlField{
+    transition: all 0.2s;
+    outline: none;
+    resize: none;
+    width: 305px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: var(--bd-rad);
+    border: solid 2px var(--gray);
+    flex-grow: 1;
+  
+ }
+ .label {
+    white-space: nowrap;
+}
+.imageContainer {
+    width: 50%;
+    height: auto;
+}
+
+.previewImage {
+    margin-top: 30px;
+    max-width: 80%;
+    height: auto;
+    
+    
+}
