@@ -180,7 +180,7 @@ export async function updateUserById(
                 age: user.age, 
                 gender: user.gender,  
                 school: user.school,
-                class: user.class,
+                class_: user.class_,
                 major: user.major,
                 minor: user.minor,
                 bio: user.bio,

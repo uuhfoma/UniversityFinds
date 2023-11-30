@@ -1,0 +1,28 @@
+.match {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    flex-Direction: row;
+    gap: 10px; /* Adds space between the image and the name */
+    border-Bottom: 1px solid #3a3a3a;
+}
+
+.image {
+    /* Set the size of the image */
+    width: 50px;    /* Example size, adjust as needed */
+    height: 50px;   /* Example size, adjust as needed */
+    border-radius: 50%; /* Makes the image circular */
+}
+
+.name_and_text {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .match{
+
+    display: flex;
+    flex-Direction: row;
+    align-Items: center;
+    border-Bottom: 1px solid #ccc; 
+
+} */
