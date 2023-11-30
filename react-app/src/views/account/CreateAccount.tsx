@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import { useState } from 'react'
 import ImageURLInput from "shared/components/img-uploader/ImageURLInput";
 import { NavLink, useNavigate } from 'react-router-dom'
-
-
 import axios from 'axios'
 import styles from './CreateAccount.module.css'
 import { EnvelopeClosedIcon, LockClosedIcon, PersonIcon } from '@radix-ui/react-icons'
@@ -65,7 +63,7 @@ function CreateAccount() {
 	const [submitWarning, setSubmitWarning] = useState('')
 	const [step, setStep] = useState(1)
 	const [emailExistsError, setemailExistsError] = useState(false)
-  const [schoolEmailError, setSchoolEmailError] = useState(true)
+  const [schoolEmailError, setSchoolEmailError] = useState(false)
 
 	const [formData, setFormData] = useState<FormData>({
 		fname: '',
@@ -195,7 +193,6 @@ function CreateAccount() {
                   setStep(step + 1)
                 }
               })
-              
 						
 					}
 				})
@@ -208,7 +205,8 @@ function CreateAccount() {
 			<>
 				<div className={styles['section'] + ' ' + styles['header']}>
 					<h1>Sign Up</h1>
-					<p className='subtitle'>Let's get started with your fitness journey.</p>
+					<p className='subtitle'>Welcome to University Finds!    </p>   
+         <p> Please enter the required information below to create an account.</p>
 				</div>
 				<div className={`${styles['section']} ${emailExistsError || schoolEmailError ? styles['error'] : ''}`}>
 					<label htmlFor='email'>Email</label>
@@ -220,7 +218,7 @@ function CreateAccount() {
 							name='studentEmail'
 							value={studentEmail}
 							onChange={handleChange}
-							placeholder='johndoe@example.com'
+							placeholder='johndoe@example.edu'
 							required></input>
 					</div>
 					{emailExistsError && (
