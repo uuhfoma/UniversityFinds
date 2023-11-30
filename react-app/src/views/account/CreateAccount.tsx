@@ -162,7 +162,7 @@ function CreateAccount() {
 			<>
 				<div className={styles['section'] + ' ' + styles['header']}>
 					<h1>Sign Up</h1>
-					<p className='subtitle'>Let's get started with your fitness journey.</p>
+					<p className='subtitle'>Welcome to University Finds! </p>   
 				</div>
 				<div className={styles['section']}>
 					<button className='btn-primary' type='button' onClick={() => setStep(step + 1)}>

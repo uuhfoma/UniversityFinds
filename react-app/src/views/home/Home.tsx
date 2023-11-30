@@ -1,9 +1,12 @@
 import React from 'react';
+// import video from '.../videoTU.mp4'
 
 const Home: React.FC = () => {
   return (
-    <div>
-      {/* Component content goes here */}
+    <div className='home'>
+
+      {/* <video src {video} /> */}
+
     </div>
   );
 };
