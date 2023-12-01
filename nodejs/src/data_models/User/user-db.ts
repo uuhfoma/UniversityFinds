@@ -155,7 +155,7 @@ export async function getUsersExcept(ids: Array<ObjectId | string>) {
     return users;
 }
 
-export async function getUserById(userId: string) {
+export async function getUserById(userId: ObjectId | string) {
 	const usersCollection = db.collection<User>('users')
 	return await usersCollection.findOne(
 		{ _id: new ObjectId(userId) },

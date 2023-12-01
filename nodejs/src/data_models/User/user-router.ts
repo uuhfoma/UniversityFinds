@@ -17,10 +17,13 @@ router.use('/me', sessionAuthMiddleware)
 
 router.get('/me', async (req, res) => {
 	const userId = res.locals.userId
-
-	const user = await userDB.getUserById(userId)
+	const stringId = userId.toString();
+	
+	const user = await userDB.getUserById(stringId)
 
 	res.json(user)
+	console.log(stringId)
+	console.log(user)
 })
 
 router.get('/:id', async (req, res) => {

@@ -12,6 +12,7 @@ const sessionAuthMiddleware: RequestHandler = async (
 
 	if (!cookie) {
 		console.log('Client is not autheticated...redirecting')
+		console.log('sdf')
 
 		res.sendStatus(401)
 		return
@@ -28,7 +29,7 @@ const sessionAuthMiddleware: RequestHandler = async (
 
 	console.log('Client is autheticated')
 
-	res.locals.userId = existingSession._id
+	res.locals.userId = existingSession.user
 	next()
 }
 
