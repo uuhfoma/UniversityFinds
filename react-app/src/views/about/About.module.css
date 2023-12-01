@@ -1,6 +1,7 @@
 /* About.module.css */
 
 .container {
+  background-image :linear-gradient(to top, navy, silver);
   display: flex;
   flex-direction: column;
   align-items: center;
