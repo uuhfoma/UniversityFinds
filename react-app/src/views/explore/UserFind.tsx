@@ -12,28 +12,28 @@ interface User {
 const UserFind: React.FC = () => {
   const users: User[] = [
     {
-      name: 'Syket',
+      name: 'Jeff',
       age: 20,
       university: 'Towson University',
       major: 'Computer Science',
       gender: 'Male',
     },
     {
-      name: 'Sakib',
-      age: 25,
-      major: 'Programmer',
-      gender: 'Male',
+      name: 'Lela',
+      age: 21,
+      major: 'Busienss Admin',
+      gender: 'Female',
     },
     {
       name: 'Jamy',
-      age: 30,
-      major: 'Designer',
+      age: 19,
+      major: 'Arts and Design',
       gender: 'Female',
     },
     {
       name: 'Hanif',
       age: 20,
-      major: 'UX Writer',
+      major: 'Economics',
       gender: 'Male',
     },
   ];
@@ -49,7 +49,7 @@ const UserFind: React.FC = () => {
   return (
     <div>
       <div className="title">
-        <h1>Unlock a World of Connections: Welcome to UniversityFinds – Where Friendships Know No Borders!</h1>
+        <h1>Unlock a World of Connections:</h1>
       </div>
       <div className="input__wrapper">
         <input
