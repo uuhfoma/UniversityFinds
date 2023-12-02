@@ -11,6 +11,7 @@ import Home from 'views/home/Home'
 import Login from 'views/account/Login'
 import CreateAccount from 'views/account/CreateAccount'
 import About from 'views/about/about'
+import Messages from 'views/matches/messages'
 
 type UserContext = {
 	user: User | undefined
@@ -29,6 +30,7 @@ export default function App() {
 						<Route path='/explore' index element={<Explore />} />
 						<Route path='/likes' element={<Likes />} />
 						<Route path='/matches' element={<Matches />} />
+						<Route path='/instantmessenger/:id' element={<Messages />} />
 						<Route path='/settings' element={<Settings />} />
 					</Route>
 

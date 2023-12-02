@@ -43,12 +43,16 @@ const Matches: React.FC = () => {
     );
   }else{
     return (
-        <div className = {styles.container}>
+      <div className={styles.outerContainer}>
+        <div className={styles.container}>
           <h2 className={styles.title}>Matches</h2>
-            {matchesList.map((user, index) => (
-                <Match key={index} user={user} />
-            ))}
+            <div className = {styles.matchList}>
+              {matchesList.map((user, index) => (
+                  <Match key={index} user={user} />
+              ))}
+            </div>
         </div>
+      </div>
     );
   }
     
