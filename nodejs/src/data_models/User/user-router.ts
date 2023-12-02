@@ -22,8 +22,7 @@ router.get('/me', async (req, res) => {
 	const user = await userDB.getUserById(stringId)
 
 	res.json(user)
-	console.log(stringId)
-	console.log(user)
+	
 })
 
 router.get('/:id', async (req, res) => {
