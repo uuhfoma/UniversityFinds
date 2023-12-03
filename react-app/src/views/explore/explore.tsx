@@ -72,11 +72,15 @@ const UserFind: React.FC = () => {
           userList.length > 0 &&
           userList.map((user) => (
             <div className="body__item" key={user.name}>
+              <a href = "UserFind.tsx">
               <h3>Name: {user.name}</h3>
               <p>Age: {user.age}</p>
               <p>Major: {user.major}</p>
               {user.university && <p>University: {user.university}</p>}
               {user.gender && <p>Gender: {user.gender}</p>}
+
+              </a>
+             
             </div>
           ))}
       </div>
