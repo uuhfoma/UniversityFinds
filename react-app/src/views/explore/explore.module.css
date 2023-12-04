@@ -1,0 +1,9 @@
+.body{
+    overflow-y: scroll;
+}
+
+.image{
+    width: 100px;
+    height: 100px;
+    
+}

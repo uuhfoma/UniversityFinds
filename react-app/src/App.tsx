@@ -30,7 +30,7 @@ export default function App() {
 						<Route path='/explore' index element={<Explore />} />
 						<Route path='/likes' element={<Likes />} />
 						<Route path='/matches' element={<Matches />} />
-						<Route path='/instantmessenger/:id/:id2' element={<Messages />} />
+						<Route path='/matches/:id/:id2' element={<Messages />} />
 						<Route path='/settings' element={<Settings />} />
 					</Route>
 

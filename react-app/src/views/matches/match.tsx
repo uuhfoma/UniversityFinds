@@ -36,7 +36,7 @@ const Match: React.FC<RowComponentProps> = ({ user, user2 }) => {
     }, []); 
 
     return (
-        <NavLink to= {`/instantmessenger/${user._id}/${user2?._id}`}>
+        <NavLink to= {`/matches/${user._id}/${user2?._id}`}>
             <div className={styles.match}>
                 
                     <img className={styles.image} src={user.pictures[0]} alt='profile pic' />

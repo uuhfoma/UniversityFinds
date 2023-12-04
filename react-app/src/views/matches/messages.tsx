@@ -5,7 +5,7 @@ import { User } from 'shared/models/user';
 import {Message} from 'shared/models/message'
 
 const Chat = React.memo(({ groupedMessages }: { groupedMessages: Message[][] }) => {
-    const [hoveredMessage, setHoveredMessage] = useState<number | null>(null);
+    const [hoveredMessage, setHoveredMessage] = useState<string | null>(null);
     const { id } = useParams();
     const { id2 } = useParams();
 
@@ -26,20 +26,20 @@ const Chat = React.memo(({ groupedMessages }: { groupedMessages: Message[][] }) 
                         {group.map((message, index2) => (
                         <div key={index2} className={`${group[index2].from === id2 ? styles.mine : styles.yours} ${styles.messages}`}>
                             
-                                <React.Fragment key={index2}>
-                                <div key={index2} className={` ${styles.message}`}onMouseEnter={() => setHoveredMessage(index2)}
+                                
+                                <div key={message._id} className={` ${styles.message}`}onMouseEnter={() => setHoveredMessage(message._id)}
                                  onMouseLeave={() => setHoveredMessage(null)}>
                                     {message.content}
                                     
                                 </div>
 
-                                {hoveredMessage === index2 && (
+                                {hoveredMessage === message._id && (
                                 <div className={styles.messageTime}>
                                     {new Date(message.dateAndTime).toLocaleString()}
                                 </div>
                             )}
 
-                                </React.Fragment>
+                                
                             
                         </div>
                         ))}
@@ -135,7 +135,13 @@ const Messages: React.FC = () => {
         
         // Process the message here (e.g., send it to the server)
         console.log('Message to send:', inputValue);
-        messageList.push({_id:'',from: id2 as string, to: id as string, dateAndTime: timestamp, content: inputValue})
+
+        let number = '';
+        for (let i = 0; i < 12; i++) {
+            number += Math.floor(Math.random() * 10).toString(); // generates a single digit (0-9) and converts it to a string
+        }
+        
+        messageList.push({_id:number,from: id2 as string, to: id as string, dateAndTime: timestamp, content: inputValue})
         setMessageList(messageList)
         const groupedMessages = groupMessages(messageList);
         // Clear the input field after sending the message
@@ -150,27 +156,35 @@ const Messages: React.FC = () => {
     }
 
   return (
-    <div className={styles.body}>
-        <div className={styles.leftContainer}>
-            <img className={styles.image} src={currentMatch?.pictures[0]} alt='profile pic' />
-            <h1>{currentMatch?.fname}, {currentMatch?.age}</h1>
-            <p>{currentMatch?.bio}</p>
-            <p>School: {currentMatch?.school || 'Currently unenrolled'}</p>
-            <div> </div>
-            <p>Major: {currentMatch?.major || 'Undecided'}</p>
-            <p>Minor: {currentMatch?.minor || 'n/a'}</p>
-
+    <div className={styles.head}>
+        <div className={styles.headerContainer}>
+            <h1 className={styles.header}>Instant Messenger</h1>
         </div>
-        <div className={styles.messenger}>
-            <Chat groupedMessages={groupedMessages}/>
-            <form onSubmit={handleSubmit}>
-                <div className={styles.textbox}>
-                        <input id="input" value={inputValue} onChange={handleInputChange}></input>
-                        <button id="sendButton">Send</button>
-                </div>
-            </form>
-        </div>    
-        
+        <div className={styles.body}>
+            
+            <div className={styles.leftContainer}>
+                <img className={styles.image} src={currentMatch?.pictures[0]} alt='profile pic' />
+                <h1 className={styles.text}>{currentMatch?.fname}, {currentMatch?.age}</h1>
+                <p className={styles.text}><b>Bio: </b>{currentMatch?.bio}</p>
+                <p className={styles.text}><b>School:</b> {currentMatch?.school || 'Currently unenrolled'}</p>
+                <div> </div>
+                <p><b>Class:</b> {currentMatch?.class_ || 'n/a'}</p>
+                <p><b>Major:</b> {currentMatch?.major || 'Undecided'}</p>
+                <p><b>Minor:</b> {currentMatch?.minor || 'n/a'}</p>
+
+            </div>
+            
+            <div className={styles.messenger}>
+                <Chat groupedMessages={groupedMessages}/>
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.textbox}>
+                            <input id="input" value={inputValue} placeholder='  Message' onChange={handleInputChange}></input>
+                            <button id="sendButton">Send</button>
+                    </div>
+                </form>
+            </div>    
+            
+        </div>
     </div>
   );
 };
