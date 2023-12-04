@@ -11,7 +11,7 @@ const Home: React.FC = () => {
 
 
     <ReactPlayer className={styles.reactPlayer}
-    url={"/src/layouts/public/Home.videoTU.mp4"} 
+    url={"/src/layouts/public/Home.videoTUII.mp4"} 
      playing  
      muted 
      loop
