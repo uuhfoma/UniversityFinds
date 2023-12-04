@@ -1,55 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './messages.module.css';
 import { useParams } from 'react-router-dom';
 import { User } from 'shared/models/user';
 import {Message} from 'shared/models/message'
 
-const Chat = React.memo(({ groupedMessages }: { groupedMessages: Message[][] }) => {
-    const [hoveredMessage, setHoveredMessage] = useState<number | null>(null);
-    const { id } = useParams();
-    const { id2 } = useParams();
 
-    const chatEndRef = useRef<HTMLDivElement>(null);
-
-    const scrollToBottom = () => {
-        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-
-    useEffect(() => {
-        scrollToBottom();
-    }, [groupedMessages]);
-
-    return (
-        <div className={styles.chat}>
-                    {groupedMessages.map((group, index) => (
-                        <div>
-                        {group.map((message, index2) => (
-                        <div key={index2} className={`${group[index2].from === id2 ? styles.mine : styles.yours} ${styles.messages}`}>
-                            
-                                <React.Fragment key={index2}>
-                                <div key={index2} className={` ${styles.message}`}onMouseEnter={() => setHoveredMessage(index2)}
-                                 onMouseLeave={() => setHoveredMessage(null)}>
-                                    {message.content}
-                                    
-                                </div>
-
-                                {hoveredMessage === index2 && (
-                                <div className={styles.messageTime}>
-                                    {new Date(message.dateAndTime).toLocaleString()}
-                                </div>
-                            )}
-
-                                </React.Fragment>
-                            
-                        </div>
-                        ))}
-
-                        </div>
-                    ))}
-                    <div ref={chatEndRef} />
-            </div>
-    );
-});
 
 const Messages: React.FC = () => {
     const { id } = useParams();
@@ -107,12 +62,11 @@ const Messages: React.FC = () => {
         if (currentGroup.length) {
             grouped.push(currentGroup);
         }
-        console.log(grouped)
+        console.log('grouped: '+grouped)
         return grouped;
     };
 
     const groupedMessages = groupMessages(messageList);
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
     };
@@ -135,9 +89,7 @@ const Messages: React.FC = () => {
         
         // Process the message here (e.g., send it to the server)
         console.log('Message to send:', inputValue);
-        messageList.push({_id:'',from: id2 as string, to: id as string, dateAndTime: timestamp, content: inputValue})
-        setMessageList(messageList)
-        const groupedMessages = groupMessages(messageList);
+
         // Clear the input field after sending the message
         setInputValue('');
     };
@@ -155,14 +107,22 @@ const Messages: React.FC = () => {
             <img className={styles.image} src={currentMatch?.pictures[0]} alt='profile pic' />
             <h1>{currentMatch?.fname}, {currentMatch?.age}</h1>
             <p>{currentMatch?.bio}</p>
-            <p>School: {currentMatch?.school || 'Currently unenrolled'}</p>
-            <div> </div>
-            <p>Major: {currentMatch?.major || 'Undecided'}</p>
-            <p>Minor: {currentMatch?.minor || 'n/a'}</p>
-
         </div>
         <div className={styles.messenger}>
-            <Chat groupedMessages={groupedMessages}/>
+            <div className={styles.chat}>
+                    {groupedMessages.map((group, index) => (
+                        <div key={index} className={`${group[index].from === id2 ? styles.mine : styles.yours} ${styles.messages}`}>
+                            {group.map((message) => (
+                                <div key={message._id} className={` ${styles.message}`}>
+                                    {message.content}
+                                    <div className={styles.messageTime}>
+                                        {new Date(message.dateAndTime).toLocaleString()}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className={styles.textbox}>
                         <input id="input" value={inputValue} onChange={handleInputChange}></input>
@@ -176,3 +136,4 @@ const Messages: React.FC = () => {
 };
 
 export default Messages;
+

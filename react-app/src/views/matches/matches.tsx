@@ -9,7 +9,7 @@ import styles from './matches.module.css'
 
 const Matches: React.FC = () => {
   const baseUrl = 'http://localhost:5001/api';
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState<User>();
   const [matchesList, setMatchesList] = useState<User[]>([]);
 
 
@@ -48,7 +48,7 @@ const Matches: React.FC = () => {
           <h2 className={styles.title}>Matches</h2>
             <div className = {styles.matchList}>
               {matchesList.map((user, index) => (
-                  <Match key={index} user={user} />
+                  <Match key={index} user={user} user2={currentUser} />
               ))}
             </div>
         </div>

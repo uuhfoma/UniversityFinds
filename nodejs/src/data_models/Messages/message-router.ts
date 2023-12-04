@@ -20,6 +20,59 @@ router.post('/add', async (req, res) => {
 			res.sendStatus(500)
 		})
 })
+router.get('/directmessage', async (req, res) =>{
+	
+    const id_sender = typeof req.query.id_sender === 'string' ? req.query.id_sender : null;
+    const id_receiver = typeof req.query.id_receiver === 'string' ? req.query.id_receiver : null;
+	console.log('Getting messages between ', id_sender, 'and ', id_receiver)
+    
+
+	if (!id_sender || !id_receiver) {
+        // Handle the case where one or both of the IDs are missing or not strings
+        res.status(400).send("Invalid request parameters");
+        return;
+    }
+
+    messageDB
+        .getConversation(id_sender, id_receiver)
+        .then((messages) => {
+            console.log(messages)
+            res.json(messages)
+        })
+        .catch((err) => {
+            console.log(err)
+            res.sendStatus(500)
+        })
+
+
+})
+
+router.get('/latestmessage', async (req, res) =>{
+	
+    const id_sender = typeof req.query.id_sender === 'string' ? req.query.id_sender : null;
+    const id_receiver = typeof req.query.id_receiver === 'string' ? req.query.id_receiver : null;
+	console.log('Getting latest message between ', id_sender, 'and ', id_receiver)
+    
+
+	if (!id_sender || !id_receiver) {
+        // Handle the case where one or both of the IDs are missing or not strings
+        res.status(400).send("Invalid request parameters");
+        return;
+    }
+
+    messageDB
+        .getLatestMessage(id_sender, id_receiver)
+        .then((message) => {
+            console.log(message)
+            res.json(message)
+        })
+        .catch((err) => {
+            console.log(err)
+            res.sendStatus(500)
+        })
+
+
+})
 
 router.get('/:id', async (req, res) => {
 	const { id } = req.params
@@ -43,24 +96,6 @@ router.get('/:id', async (req, res) => {
 		})
 })
 
-router.get('/directmessage', async (req, res) =>{
-    const id_sender = req.body[0]
-    const id_receiver = req.body[1]
-
-    console.log('Getting messages between ', id_sender, 'and ', id_receiver)
-
-    messageDB
-        .getConversation(id_sender, id_receiver)
-        .then((messages) => {
-            console.log(messages)
-            res.json(messages)
-        })
-        .catch((err) => {
-            console.log(err)
-            res.sendStatus(500)
-        })
-
-
-}) 
+ 
 
 export default router
