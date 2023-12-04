@@ -1,9 +1,9 @@
 # UniversityFinds
 
-### HOW TO RUN UNTILL ITS HOSTED
+# HOW TO RUN UNTILL ITS HOSTED
 
 
-# Frontend Install packages
+### Frontend Install packages
  
 ```shell
 cd react-app
