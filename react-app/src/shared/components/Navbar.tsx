@@ -1,14 +1,16 @@
 import { ChevronRightIcon, HomeIcon } from '@radix-ui/react-icons'
 import { FunctionComponent } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 
 import { getClassNames } from 'shared/utils/utils'
+import axios from 'axios'
 
 const navbar: FunctionComponent = () => {
+	const baseUrl = 'http://localhost:5001/api';
 	useLocation()
-
+	const navigate = useNavigate()
 	const breadCrumbs = () => {
 		const { pathname } = window.location
 		const paths = pathname
@@ -31,6 +33,27 @@ const navbar: FunctionComponent = () => {
 				</div>
 			)
 		})
+	}
+
+	const logout = () => {
+		const authToken = { authToken: localStorage.getItem('AUTHTOKEN') }
+		const jsonData = JSON.stringify(authToken)
+
+		axios
+			.post(baseUrl + '/users/logout', jsonData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				withCredentials: true,
+			})
+			.then((res) => {
+				localStorage.removeItem('AUTHTOKEN')
+				console.log('successfully logged out!')
+				navigate('/')
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}
 
 	const linkClassNames = (isActive: boolean) =>
@@ -59,7 +82,11 @@ const navbar: FunctionComponent = () => {
 						Settings
 					</NavLink>
 				</nav>
-				
+				<div>
+					<NavLink to='/' style={{width: '80px', display: 'block', margin: 'auto', textAlign: 'center'}} className='btn-primary' onClick={logout}>
+						Logout
+					</NavLink>
+				</div>
 			</div>
 
 			<div id={styles['breadcrumbs']}>
