@@ -3,6 +3,7 @@ import './usersfind.css';
 import { User } from 'shared/models/user';
 import { NavLink } from 'react-router-dom';
 import  Styles  from './explore.module.css';
+import Heart from "react-heart";
 
 const UserFind: React.FC = () => {
   const [userList, setUserList] = useState<User[]>([]);
@@ -11,7 +12,7 @@ const UserFind: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [text, setText] = useState<string>('');
-  
+  const [activeHearts, setActiveHearts] = useState<{ [key: string]: boolean }>({});
   const baseUrl = 'http://localhost:5001/api';
 
   useEffect(() => {
@@ -51,6 +52,16 @@ const UserFind: React.FC = () => {
       }
       
     }
+    
+  };
+
+  const handleHeartClick = (userId: string) => {
+    // Toggle the active state for the specific user
+    setActiveHearts((prevActiveHearts) => ({
+      ...prevActiveHearts,
+      [userId]: !prevActiveHearts[userId]
+    }));
+
     
   };
   const [selectedGender, setSelectedGender] = useState<string>('both');
@@ -125,15 +136,19 @@ const UserFind: React.FC = () => {
           
           userList.map((user) => (
             <div className="body__item" key={user._id}> 
-              <NavLink to={`/user/${user._id}`}> 
+               
               <img className={Styles.image} src={user.pictures[0]} alt='profile pic' />
+              <Heart 
+            isActive={activeHearts[user._id] || false} 
+            onClick={() => handleHeartClick(user._id)}
+            />
                 <h3>Name: {user.fname}</h3>
                 <p>Age: {user.age}</p>
                 <p>Major: {user.major}</p>
                 {user.school && <p>University: {user.school}</p>}
                 {user.bio && <p>Bio: {user.bio}</p>}
                 {user.gender && <p>Gender: {user.gender}</p>}
-              </NavLink>
+              
             </div>
           ))
         )}

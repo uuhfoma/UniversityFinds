@@ -36,7 +36,8 @@
   }
   
   .body__item {
-    text-align: left !important;
+    text-align: center !important;
+    align-items: center;
     border: 1px solid lightgray;
     padding: 20px;
     width: 500px;
