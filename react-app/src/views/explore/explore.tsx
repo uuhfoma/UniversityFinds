@@ -37,8 +37,32 @@ const UserFind: React.FC = () => {
   }, [baseUrl]);
 
   const handleOnClick = () => {
-    const filteredUsers = allUsers.filter((u) => u.school === text);
-    setUserList(filteredUsers);
+    if (text == "" || text == undefined ){
+      setUserList(allUsers);
+    }else{
+      const filteredUsers = allUsers.filter((u) => 
+      u.school?.toLowerCase().includes(text.toLowerCase()));
+      if (selectedGender == 'both'){
+        setUserList(filteredUsers);
+      }else{
+        const filteredUsers2 = filteredUsers.filter((u) =>
+        u.gender === selectedGender)
+        setUserList(filteredUsers2);
+      }
+      
+    }
+    
+  };
+  const [selectedGender, setSelectedGender] = useState<string>('both');
+
+  const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedGender(event.target.value);
+  };
+
+  const handleClick = () => {
+    // Handle the filter logic here based on selectedGender
+    console.log(`Filtering for: ${selectedGender}`);
+    // Add your filter logic here
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -49,8 +73,38 @@ const UserFind: React.FC = () => {
       <div className="title">
         <h1>Unlock a World of Connections: Welcome to UniversityFinds – Where Friendships Know No Borders!</h1>
       </div>
-      <div className="input__wrapper">
+      <div className={Styles.filters}>
+      <label className={Styles.filter}>
+        Male
+        <input 
+          type="radio"
+          value="male"
+          checked={selectedGender === 'male'}
+          onChange={handleGenderChange}
+        />
+      </label>
+      <label>
+        Female
         <input
+          type="radio"
+          value="female"
+          checked={selectedGender === 'female'}
+          onChange={handleGenderChange}
+        />
+      </label>
+      <label>
+        Both
+        <input
+          type="radio"
+          value="both"
+          checked={selectedGender === 'both'}
+          onChange={handleGenderChange}
+        />
+      </label>
+      {/* <button onClick={handleClick}>Filter</button> */}
+    </div>
+      <div className="input__wrapper">
+        <input className={Styles.input}
           type="text"
           placeholder="Search University"
           value={text}
@@ -63,7 +117,7 @@ const UserFind: React.FC = () => {
 
       <div className="body">
         {userList && userList.length === 0 && (
-          <div className="notFound">No University Found</div>
+          <div className="notFound">No Students Found</div>
         )}
 
         {userList && userList.length > 0 && (
@@ -76,6 +130,7 @@ const UserFind: React.FC = () => {
                 <p>Age: {user.age}</p>
                 <p>Major: {user.major}</p>
                 {user.school && <p>University: {user.school}</p>}
+                {user.bio && <p>Bio: {user.bio}</p>}
                 {user.gender && <p>Gender: {user.gender}</p>}
               </NavLink>
             </div>

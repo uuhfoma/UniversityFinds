@@ -7,3 +7,24 @@
     height: 100px;
     
 }
+
+.input{
+    width: 700px;
+}
+.filters{
+    /* margin-top: 42px; */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 16px;
+    padding-top: 0;
+    align-items: center;
+    
+    
+}
+
+.filter{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
