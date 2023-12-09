@@ -12,10 +12,10 @@ const Likes: React.FC = () => {
  
   useEffect(() => {
      setIsLoading(true);
-     fetch(baseUrl + `/users/likes/${currentUser?._id}`, { credentials: 'include' })
+     fetch(baseUrl + `/users/me`, { credentials: 'include' })
        .then((res) => res.json())
        .then((data) => {
-         setLikedUsers(data);
+         setLikedUsers(data.likes);
          setIsLoading(false);
        })
        .catch((err) => {

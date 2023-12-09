@@ -73,6 +73,7 @@ const UserFind: React.FC = () => {
       <div className="title">
         <h1>Unlock a World of Connections: Welcome to UniversityFinds – Where Friendships Know No Borders!</h1>
       </div>
+      <div className={Styles.container}>
       <div className={Styles.filters}>
       <label className={Styles.filter}>
         Male
@@ -83,7 +84,7 @@ const UserFind: React.FC = () => {
           onChange={handleGenderChange}
         />
       </label>
-      <label>
+      <label className={Styles.filter}>
         Female
         <input
           type="radio"
@@ -92,7 +93,7 @@ const UserFind: React.FC = () => {
           onChange={handleGenderChange}
         />
       </label>
-      <label>
+      <label className={Styles.filter}>
         Both
         <input
           type="radio"
@@ -114,7 +115,7 @@ const UserFind: React.FC = () => {
           Search
         </button>
       </div>
-
+      </div>
       <div className="body">
         {userList && userList.length === 0 && (
           <div className="notFound">No Students Found</div>
