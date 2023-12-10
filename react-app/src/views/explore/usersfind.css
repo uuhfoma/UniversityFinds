@@ -1,5 +1,5 @@
 .title {
-    background: white;
+    /* background: white; */
     color: #ffffff;
     width: 100%;
     padding: 40px 0px;
@@ -40,8 +40,12 @@
     align-items: center;
     border: 1px solid lightgray;
     padding: 20px;
-    width: 500px;
-    margin: 20px auto;
+    /* width: 500px ; */
+    /* min-width: 500px ;
+    height: 500px; */
+    max-width: 600px;
+    /* margin: 20px ; */
+    zoom: .8;
   }
   
   .notFound {

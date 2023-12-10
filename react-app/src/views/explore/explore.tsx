@@ -9,6 +9,7 @@ const UserFind: React.FC = () => {
   const [userList, setUserList] = useState<User[]>([]);
   const [allUsers, setAllUsers] = useState<User[]>([]); // For storing all users
   const [currentUser, setCurrentUser] = useState<User>();
+  
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [text, setText] = useState<string>('');
@@ -38,8 +39,15 @@ const UserFind: React.FC = () => {
   }, [baseUrl]);
 
   const handleOnClick = () => {
-    if (text == "" || text == undefined ){
-      setUserList(allUsers);
+    if (!text){
+
+      if (selectedGender == 'both'){
+        setUserList(allUsers);
+      }else{
+        const filteredUsers2 = allUsers.filter((u) =>
+        u.gender === selectedGender)
+        setUserList(filteredUsers2);
+      }
     }else{
       const filteredUsers = allUsers.filter((u) => 
       u.school?.toLowerCase().includes(text.toLowerCase()));
@@ -56,14 +64,75 @@ const UserFind: React.FC = () => {
   };
 
   const handleHeartClick = (userId: string) => {
-    // Toggle the active state for the specific user
-    setActiveHearts((prevActiveHearts) => ({
-      ...prevActiveHearts,
-      [userId]: !prevActiveHearts[userId]
-    }));
+    // First, determine the current state before toggling
+    let isCurrentlyActive = false;
+
+    setActiveHearts((prevActiveHearts) => {
+      isCurrentlyActive = !!prevActiveHearts[userId];
+      return {
+        ...prevActiveHearts,
+        [userId]: !prevActiveHearts[userId]
+      };
+    });
+    let foundUser: User | undefined;
+        for (let i = 0; i < allUsers.length; i++) {
+          if (allUsers[i]._id === userId) {
+            foundUser = allUsers[i];
+            break; // Exit the loop once the user is found
+          }
+        }
+
+    if (isCurrentlyActive){
+      if (foundUser && Array.isArray(foundUser.likes) && currentUser) {
+       foundUser.likes = foundUser.likes.filter(user => user._id !== currentUser._id);
+       fetch(baseUrl + `/users/update/${userId}`, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(foundUser)
+      })
+      }
+    }else{
+      
+    if (foundUser && Array.isArray(foundUser.likes) && currentUser) {
+      // Check if currentUser is already in the likes array
+      const isAlreadyLiked = foundUser.likes.some(user => user._id === currentUser._id);
+  
+      if (!isAlreadyLiked) {
+        // If not already liked, add currentUser to likes
+        const updatedUser = {
+          ...foundUser,
+          likes: [...foundUser.likes, currentUser] // Add currentUser to likes
+        };
+        
+        fetch(baseUrl + `/users/update/${userId}`, {
+              method: 'PUT',
+              credentials: 'include',
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(updatedUser)
+            })
+      }
+    }
+    }
+  };
+    
+
+
+
+
+
+
 
     
-  };
+
+    
+ 
   const [selectedGender, setSelectedGender] = useState<string>('both');
 
   const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +151,7 @@ const UserFind: React.FC = () => {
   return (
     <div className={Styles.body}>
       <div className="title">
-        <h1>Unlock a World of Connections: Welcome to UniversityFinds – Where Friendships Know No Borders!</h1>
+        <h1>Unlock a World of Connections: Welcome to UniversityFinds </h1>
       </div>
       <div className={Styles.container}>
       <div className={Styles.filters}>
@@ -122,7 +191,7 @@ const UserFind: React.FC = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button disabled={!text} onClick={handleOnClick}>
+        <button  onClick={handleOnClick}>
           Search
         </button>
       </div>
@@ -131,27 +200,27 @@ const UserFind: React.FC = () => {
         {userList && userList.length === 0 && (
           <div className="notFound">No Students Found</div>
         )}
-
+        <div className={Styles.cardBody}>
         {userList && userList.length > 0 && (
           
           userList.map((user) => (
             <div className="body__item" key={user._id}> 
                
               <img className={Styles.image} src={user.pictures[0]} alt='profile pic' />
-              <Heart 
-            isActive={activeHearts[user._id] || false} 
-            onClick={() => handleHeartClick(user._id)}
-            />
+              
                 <h3>Name: {user.fname}</h3>
                 <p>Age: {user.age}</p>
                 <p>Major: {user.major}</p>
                 {user.school && <p>University: {user.school}</p>}
                 {user.bio && <p>Bio: {user.bio}</p>}
                 {user.gender && <p>Gender: {user.gender}</p>}
-              
+                <Heart  isActive={activeHearts[user._id] || false} onClick={() => handleHeartClick(user._id)}/> Click the heart to get to know!
+                
             </div>
           ))
+          
         )}
+        </div>
       </div>
     </div>
   );

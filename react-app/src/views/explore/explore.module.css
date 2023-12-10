@@ -1,10 +1,23 @@
 .body{
     overflow-y: scroll;
 }
+.cardBody{
+    /* display: flex; */
+    display: grid;
+  grid-template-columns: auto auto auto; /* Defines the number and size of columns */
+  grid-gap: 20px; /* Space between rows and columns */
+  /* padding: 10px; */
+  margin: 35px 150px 50px 150px;
+}
+.heart{
+    width: 200px;
+    height: 200px;
 
+}
 .image{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
     
 }
 
