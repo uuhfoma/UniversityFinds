@@ -208,12 +208,12 @@ const UserFind: React.FC = () => {
                
               <img className={Styles.image} src={user.pictures[0]} alt='profile pic' />
               
-                <h3>Name: {user.fname}</h3>
-                <p>Age: {user.age}</p>
-                <p>Major: {user.major}</p>
-                {user.school && <p>University: {user.school}</p>}
-                {user.bio && <p>Bio: {user.bio}</p>}
-                {user.gender && <p>Gender: {user.gender}</p>}
+                <h3> {user.fname}, {user.age} </h3>
+                {/* <p><b>Age:</b> </p> */}
+                <p><b>Major:</b> {user.major}</p>
+                {user.school && <p><b>University:</b> {user.school}</p>}
+                {user.bio && <p><b>Bio:</b> {user.bio}</p>}
+                {user.gender && <p><b>Gender:</b> {user.gender}</p>}
                 <Heart  isActive={activeHearts[user._id] || false} onClick={() => handleHeartClick(user._id)}/> Click the heart to get to know!
                 
             </div>
