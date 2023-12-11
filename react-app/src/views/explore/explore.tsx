@@ -122,17 +122,6 @@ const UserFind: React.FC = () => {
     }
   };
     
-
-
-
-
-
-
-
-    
-
-    
- 
   const [selectedGender, setSelectedGender] = useState<string>('both');
 
   const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -158,8 +158,7 @@ export async function getUsersExcept(ids: Array<ObjectId | string>) {
 export async function getUserById(userId: ObjectId | string) {
 	const usersCollection = db.collection<User>('users')
 	return await usersCollection.findOne(
-		{ _id: new ObjectId(userId) },
-		{ projection: { password: 0 } }
+		{ _id: new ObjectId(userId) }
 	)
 }
 

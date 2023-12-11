@@ -1,4 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { User } from 'shared/models/user';
+
+const baseUrl = 'http://localhost:5001/api';
+// const [currentUser, setCurrentUser] = useState<User>();
+// const [isLoading, setIsLoading] = useState<boolean>(false);
+// const [error, setError] = useState<string | null>(null);
+
+//   useEffect(() => {
+//      setIsLoading(true);
+//      fetch(baseUrl + `/users/me`, { credentials: 'include' })
+//        .then((res) => res.json())
+//        .then((data) => {
+//         setCurrentUser(data);
+//          setIsLoading(false);
+//        })
+//        .catch((err) => {
+//          console.error(err);
+//          setError('Failed to load data');
+//          setIsLoading(false);
+//        });
+//   }, []);
 
 interface Settings {
   profilePicture: string;
