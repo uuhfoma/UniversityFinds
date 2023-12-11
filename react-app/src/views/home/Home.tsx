@@ -15,7 +15,7 @@ const Home: React.FC = () => {
      playing  
      muted 
      loop
-     height ='100%'
+     height ='99.5%'
      width= '105%'
     //  style={{ position: 'absolute', top: 0, left: 0 }}
      />
