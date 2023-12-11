@@ -80,6 +80,7 @@ const SettingsPage: React.FC = () => {
       <h1>Settings</h1>
       <form>
         <div>
+        <br></br>
           <label>
             Change Profile Picture:
             <input type="file" onChange={handleProfilePictureChange} />
@@ -87,6 +88,7 @@ const SettingsPage: React.FC = () => {
         </div>
         <div>
           <label>
+          <br></br>
             Enable Notifications:
             <input
               type="checkbox"
@@ -96,6 +98,7 @@ const SettingsPage: React.FC = () => {
           </label>
         </div>
         <div>
+        <br></br>
           <label>
             Change Username:
             <input
@@ -106,6 +109,7 @@ const SettingsPage: React.FC = () => {
           </label>
         </div>
         <div>
+          <br></br>
           <label>
             Change School:
             <input

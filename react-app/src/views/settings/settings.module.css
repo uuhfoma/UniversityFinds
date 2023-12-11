@@ -1,52 +1,16 @@
-.title {
-    background: white;
-    color: #ffffff;
-    width: 100%;
-    padding: 40px 0px;
-    text-align: center;
-  }
-  .title h1 {
-    padding: 0px;
-    margin: 0px;
-  }
-  
-  .input__wrapper {
-    margin: 20px;
-    text-align: center;
-  }
-  .input__wrapper input {
-    border: 3px solid blue;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 18px;
-  }
-  .input__wrapper input:focus {
-    outline: none;
-  }
-  .input__wrapper button {
-    background-color: blue;
-    color: white;
-    padding: 8px 15px;
-    font-size: 18px;
-    border: none;
-    border: 3px solid blue;
-    border-radius: 5px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  .body__item {
-    text-align: left !important;
-    border: 1px solid lightgray;
-    padding: 20px;
-    width: 500px;
-    margin: 20px auto;
-  }
-  
-  .notFound {
-    width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid lightgray;
-    text-align: center;
-  }
+.container {
+  background-image :linear-gradient(to top, navy, silver);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  font-style:italic;
+ }
+ 
+ h1 {
+  margin-bottom: 0;
+ }
+ 
+ p {
+  margin-top: 0;
+ }
