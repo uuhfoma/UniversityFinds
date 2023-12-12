@@ -26,5 +26,5 @@ npm run dev
 
 ```shell
 cd nodejs
-npm start
+npm run dev
 ```
